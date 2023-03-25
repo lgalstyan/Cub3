@@ -16,16 +16,14 @@ char	*line_ret(char *line, int fd)
 	char	current[BUFFER_SIZE + 1];
 	long	i;
 
+	i = 0;
 	while (1)
 	{
 		i = read(fd, current, BUFFER_SIZE);
-		current[i] = '\0';
 		if (i == -1)
 			return (0);
-		if (!line)
-			line = ft_strdup(current);
-		else
-			line = ft_strjoin(line, current);
+		current[i] = '\0';
+		line = ft_strjoin(line, current);
 		if (ft_strchr(current, '\n') || i == 0)
 			break ;
 	}
@@ -46,7 +44,7 @@ char	*get_next_line(int fd)
 	len = ft_strlen(buff) - ft_strlen(ft_strchr(buff, '\n')) + 1;
 	line1 = ft_substr(buff, 0, len);
 	line2 = buff;
-	buff = ft_substr(buff, len, ft_strlen(buff));
+	buff = ft_substr(buff, len, ft_strlen(buff) - len);
 	free(line2);
 	return (line1);
 }

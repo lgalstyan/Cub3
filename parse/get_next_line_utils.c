@@ -49,11 +49,13 @@ char	*ft_strjoin(char *s1, char *s2)
 	str = malloc (ft_strlen (s1) + ft_strlen (s2) + 1);
 	if (!str)
 		return (0);
-	while (s1[i])
-		str[j++] = s1[i++];
-	i = 0;
-	while (s2[i])
-		str[j++] = s2[i++];
+	while (s1 && s1[i])
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2 && s2[j])
+		str[i++] = s2[j++];
 	str[j] = '\0';
 	if (s1)
 		free(s1);
@@ -62,26 +64,27 @@ char	*ft_strjoin(char *s1, char *s2)
 
 char	*ft_substr(char	*s, unsigned int start, size_t len)
 {
-	char	*substr;
 	size_t	i;
-	size_t	j;
+	char	*str;
+	size_t	slen;
 
-	if (!*s || !s)
-		return (NULL);
-	i = ft_strlen(s);
-	j = 0;
-	if (start < i)
-		j = i - start;
-	if (j > len)
-		j = len;
-	substr = (char *)malloc(sizeof(char) * (j + 1));
-	if (!substr)
-		return (0);
 	i = 0;
-	while (s[start] && i < j)
-		substr[i++] = s[start++];
-	substr[i] = '\0';
-	return (substr);
+	if (!s || !*s)
+		return (0);
+	slen = ft_strlen(s);
+	if (start > slen)
+		len = 0;
+	else if (slen - start < len)
+		len = slen - start;
+	str = malloc(sizeof(char) * (len + 1));
+	while (len > i && s[start + i])
+	{
+		slen = ft_strlen(s);
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 
 char	*ft_strdup(char *src)
