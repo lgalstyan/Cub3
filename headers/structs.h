@@ -1,33 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   take_map.c                                         :+:      :+:    :+:   */
+/*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/26 12:31:10 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/03/26 12:31:53 by lgalstya         ###   ########.fr       */
+/*   Created: 2023/03/26 17:29:39 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/03/26 17:29:42 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef STRUCTS_H
+# define STRUCTS_H
 
-void	check_path(char *path)
+typedef struct s_rgb
 {
-	int		len;
-	char	*ber;
+	int	r;
+	int	g;
+	int	b;
+}				t_rgb;
+typedef struct s_gps
+{
+	int	we;
+	int	no;
+	int	so;
+	int	ea;
 
-	len = ft_strlen(path);
-	if (len <= 4)
-	{
-		write(2, "Map format isn't correct.\n", 27);
-		exit(1);
-	}
-	len -= 4;
-	ber = ".cub";
-	if (ft_strncmp(path + len, ber, len) != 0)
-	{
-		write(2, "Map format isn't correct.\n", 27);
-		exit(1);
-	}
-}
+}				t_gps;
+
+typedef struct s_tool
+{
+	char	**map;
+	int		width;
+	int		height;
+	t_gps	coordin;
+	t_rgb	floor;
+	t_rgb	ceiling;
+
+}			t_tool;
+
+#endif

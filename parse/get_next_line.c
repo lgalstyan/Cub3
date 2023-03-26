@@ -11,40 +11,119 @@
 /* ************************************************************************** */
 #include "get_next_line.h"
 
-char	*line_ret(char *line, int fd)
+char	*gnl_strlcpy(char *dst, char *src, size_t dstsize)
 {
-	char	current[BUFFER_SIZE + 1];
-	long	i;
+	size_t	i;
 
 	i = 0;
+	if (!dst || !src)
+		return (0);
+	while (i < dstsize - 1 && src[i] != 0 && dstsize != 0)
+	{
+		dst[i] = src[i];
+		i++;
+	}
+	if (dstsize != 0)
+		dst[i] = '\0';
+	return (dst);
+}
+
+size_t	gnl_strlen(char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s && s[i] != 0)
+		i++;
+	return (i);
+}
+
+int	len(char *box)
+{
+	int	l;
+
+	l = gnl_strlen(box) - gnl_strlen(gnl_strchr(box, '\n')) + 1;
+	return (l);
+}
+
+char	*myread(int fd, char *box)
+{
+	char	buff[BUFFER_SIZE +1];
+	int		byte;
+
+	byte = 1;
 	while (1)
 	{
-		i = read(fd, current, BUFFER_SIZE);
-		if (i == -1)
-			return (0);
-		current[i] = '\0';
-		line = ft_strjoin(line, current);
-		if (ft_strchr(current, '\n') || i == 0)
+		byte = read(fd, buff, BUFFER_SIZE);
+		buff[byte] = '\0';
+		if (byte == -1)
+			return (NULL);
+		if (!box)
+			box = gnl_strdup(buff);
+		else
+			box = gnl_strjoin(box, buff);
+		if (gnl_strchr(buff, '\n') || byte == 0)
 			break ;
 	}
-	return (line);
+	return (box);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buff;
-	char		*line1;
-	char		*line2;
-	long		len;
+	char		*line;
+	char		*hi;
+	static char	*box = NULL;
 
-	len = 0;
-	buff = line_ret(buff, fd);
-	if (!buff)
-		return (0);
-	len = ft_strlen(buff) - ft_strlen(ft_strchr(buff, '\n')) + 1;
-	line1 = ft_substr(buff, 0, len);
-	line2 = buff;
-	buff = ft_substr(buff, len, ft_strlen(buff) - len);
-	free(line2);
-	return (line1);
+	if (fd < 0 || fd > 65535 || BUFFER_SIZE <= 0)
+		return (NULL);
+	box = myread(fd, box);
+	if (!box)
+		return (NULL);
+	line = gnl_substr(box, 0, len(box));
+	hi = box;
+	box = gnl_substr(box, len(box), gnl_strlen(box) - len(box));
+	free(hi);
+	return (line);
 }
+
+// #include <stdio.h>
+// char	*line_ret(char *line, int fd)
+// {
+// 	char	current[BUFFER_SIZE + 1];
+// 	long	i;
+
+// 	i = 0;
+// 	while (1)
+// 	{
+// 		i = read(fd, current, BUFFER_SIZE);
+// 		if (i == -1)
+// 			return (0);
+// 		current[i] = '\0';
+// 		line = gnl_strjoin(line, current);
+// 		if (gnl_strchr(current, '\n') || i == 0)
+// 		{
+// 			printf("%s\n", line);
+// 			break ;
+// 		}
+// 	}
+// 	return (line);
+// }
+
+// char	*get_next_line(int fd)
+// {
+// 	static char	*buff;
+// 	char		*line1;
+// 	char		*line2;
+// 	long		len;
+
+// 	len = 0;
+// 	buff = line_ret(buff, fd);
+// 	if (!buff)
+// 		return (0);
+// 	len = gnl_strlen(buff) - gnl_strlen(gnl_strchr(buff, '\n')) + 1;
+// 	line1 = gnl_substr(buff, 0, len);
+// 	line2 = buff;
+// 	buff = gnl_substr(buff, len, gnl_strlen(buff) - len);
+// 	free(line2);
+// 	return (line1);
+// }

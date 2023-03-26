@@ -1,26 +1,25 @@
-NAME      = cub3D
-SRCS      = $(wildcard ./srcs/*.c ./game/*.c ./parse/*.c)
-OBJS      = $(patsubst $(SRCS), ./%.o, $(SRCS)
-CC			  = cc
+NAME      	= cub3D
+SRCS      	= $(wildcard ./game/*.c ./parse/*.c)
+OBJS      	= $(SRCS:.c=.o)
+CC			= cc
 INCLUDE 	= -I./headers
-RM			  = rm -rf
+RM			= rm -rf
 CFLAGS		= -Wall -Wextra -Werror
 
-./%.o: $(SRCS) $(INCLUDE)
+%.o : %.c
 	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
-	all: $(NAME)
+all: $(NAME)
 
-	$(NAME) : $(OBJS)
-		$(CC) $(CFLAGS) $(INCLUDE) $(OBJS)  -o $(NAME)
+$(NAME) : $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJS)  -o $(NAME)
 
-	clean :
-		$(RM) $(OBJS)
+clean :
+	$(RM) $(OBJS)
 
-	fclean : clean
-			$(RM) $(NAME)
+fclean : clean
+		$(RM) $(NAME)
 
-	re : fclean all
+re : fclean all
 
-	.PHONY: all clean fclean re
-
+.PHONY: all clean fclean re
