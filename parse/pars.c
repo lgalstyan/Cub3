@@ -51,6 +51,9 @@ t_tool	parser(char *path)
 	//ic qani vor minchev 6rd toxy OK a ete hasel a stex .
 
 	// check_map(info);
+	hero.height = get_map_height(info);
+	hero.width = get_map_width(info);
+	// printf("height = %d, width = %d\n", hero.height, hero.width);
 	printf_matrix(info);
 	return (hero);
 }

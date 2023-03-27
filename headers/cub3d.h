@@ -37,6 +37,8 @@ int     is_corr_texture(char *s, int i);
 int     count_com(char *str, int i);
 char	**ft_split(char const *s, char c);
 
+int     get_map_height(char **info);
+int     get_map_width(char **info);
 void	check_info(char **info);
 void	exit_false_text_param(void);
 
