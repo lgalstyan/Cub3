@@ -24,6 +24,18 @@ void	printf_matrix(char **map)
 	}
 }
 
+// void check_map(char **info)
+// {
+// 	int	i;
+
+// 	i = 6;
+// 	while (info && info[i])
+// 	{
+
+// 		i++;
+// 	}
+// }
+
 t_tool	parser(char *path)
 {
 	char	**info;
@@ -33,6 +45,13 @@ t_tool	parser(char *path)
 	info = read_file(path);
 	hero.map = info;
 	check_info(info);
+
+
+	///////      TODO
+	//grel check_map funtion _ while ov pttvel i = 6
+	//ic qani vor minchev 6rd toxy OK a ete hasel a stex .
+
+	// check_map(info);
 	printf_matrix(info);
 	return (hero);
 }
