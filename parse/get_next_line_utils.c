@@ -82,10 +82,8 @@ char	*gnl_strjoin(char *s1, char *s2)
 char	*gnl_substr(char *s, unsigned int start, size_t len)
 {
 	char	*substring;
-	size_t	i;
 	size_t	strs;
 
-	i = 0;
 	if (!*s || !s)
 		return (NULL);
 	if (start > gnl_strlen(s))

@@ -29,7 +29,15 @@ int		ft_strlen(char *s);
 char	*ft_strdup(char *src);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strchr(char *s, int c);
 char	**read_file(char *path);
+int     is_digit(char c);
+int     is_space(char c);
+int     is_corr_texture(char *s, int i);
+int     count_com(char *str, int i);
 char	**ft_split(char const *s, char c);
+
+void	check_info(char **info);
+void	exit_false_text_param(void);
 
 #endif
