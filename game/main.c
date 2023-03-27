@@ -2,11 +2,14 @@
 
 int	main(int argc, char **argv)
 {
+	// t_tool	hero;
+
 	if (argc != 2)
 	{
 		write(2, "Must map path as argument\n", 27);
 		return (1);
 	}
+	// hero = 
 	parser(argv[1]);
 	return (0);
 }

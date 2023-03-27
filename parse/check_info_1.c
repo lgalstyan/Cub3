@@ -5,6 +5,8 @@ int	check_rgb_number(char *str, int *i)
 	int	count;
 
 	count = count_com(str, *i);
+	if (count > 3)
+		return (1);
 	while (str[*i] && str[*i] != ',' && str[*i] != '\n' && is_space(str[*i]))
 	{
 		if (count == 3)

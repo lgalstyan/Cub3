@@ -46,7 +46,6 @@ t_tool	parser(char *path)
 	hero.map = info;
 	check_info(info);
 
-
 	///////      TODO
 	//grel check_map funtion _ while ov pttvel i = 6
 	//ic qani vor minchev 6rd toxy OK a ete hasel a stex .
