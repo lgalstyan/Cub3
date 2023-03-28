@@ -49,11 +49,14 @@ t_tool	parser(char *path)
 	///////      TODO
 	//grel check_map funtion _ while ov pttvel i = 6
 	//ic qani vor minchev 6rd toxy OK a ete hasel a stex .
-
-	// check_map(info);
+	if (!check_map(info))
+	{
+		printf("ERROR\n");
+		exit(2);//chgitem karanq void funkcyan anenq entex durs ganq
+	}
 	hero.height = get_map_height(info);
 	hero.width = get_map_width(info);
-	// printf("height = %d, width = %d\n", hero.height, hero.width);
-	printf_matrix(info);
+	//printf("height = %d, width = %d\n", hero.height, hero.width);
+	//printf_matrix(info);
 	return (hero);
 }

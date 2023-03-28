@@ -8,7 +8,7 @@ int get_map_width(char **info)
 
     max = 0;
     tmp = 0;
-    i = 6;
+    i = 5;
     while (info && info[i])
     {
         i++;
