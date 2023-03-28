@@ -19,12 +19,13 @@ typedef struct s_rgb
 	int	g;
 	int	b;
 }				t_rgb;
+
 typedef struct s_gps
 {
-	int	we;
-	int	no;
-	int	so;
-	int	ea;
+	char	*we;
+	char	*no;
+	char	*so;
+	char	*ea;
 
 }				t_gps;
 

@@ -19,33 +19,27 @@ void	check_path(char *path)
 
 	len = ft_strlen(path);
 	if (len <= 4)
-	{
-		write(2, "Map format isn't correct.\n", 27);
-		exit(1);
-	}
+		exit_false_map_form();
 	len -= 4;
 	ber = ".cub";
 	if (ft_strncmp(path + len, ber, len) != 0)
-	{
-		write(2, "Map format isn't correct.\n", 27);
-		exit(1);
-	}
+		exit_false_map_form();
 }
 
 int	check_around(char **info, int i, int j)
 {
 	if (!info[i][j - 1] || !info[i][j + 1] || !info[i - 1][j] || !info[i + 1][j])
-		return (0);
+		return (1);
 	if (!ft_strrchr(CHARS, info[i][j - 1]) || !ft_strrchr(CHARS, info[i][j + 1]))
 	{
-		return (0);
+		return (2);
 	}
 	if (!ft_strrchr(CHARS, info[i - 1][j]) || !ft_strrchr(CHARS, info[i + 1][j]))
-		return (0);
-	return (1);
+		return (3);
+	return (0);
 }
 
-int	check_map(char **info)
+void	check_map(char **info)
 {
 	int	i;
 	int	j;
@@ -60,15 +54,14 @@ int	check_map(char **info)
 		while (info[i] && info[i][j])
 		{
 			if (info[i][j] && !ft_strrchr(CHARS, info[i][j]) && info[i][j] != ' ')
-				return (0);
+				exit_false_map();
 			if (info[i][j] && ft_strrchr(HERO, info[i][j]))
 				++count;
-			if (info[i][j] == '0' && !check_around(info, i , j))
-				return (0);
+			if (info[i][j] == '0' && check_around(info, i , j) != 0)
+				exit_false_map();
 			++j;
 		}
 	}
 	if (count > 1 || count < 1)
-		return (0);
-	return (1);
+		exit_false_map();
 }

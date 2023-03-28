@@ -11,3 +11,9 @@ void	exit_false_map(void)
 	write(2, "Map isn't correct\n", 19);
 	exit(2);
 }
+
+void	exit_false_map_form(void)
+{
+	write(2, "Map format isn't correct.\n", 27);
+	exit(2);
+}

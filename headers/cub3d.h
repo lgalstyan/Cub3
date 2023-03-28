@@ -40,11 +40,20 @@ int     is_space(char c);
 int     is_corr_texture(char *s, int i);
 int     count_com(char *str, int i);
 char	**ft_split(char const *s, char c);
-
+char	*ft_substr(char *s, int start, int len);
+int     ft_atoi(char *str);
+void	ft_free_matrix(char **matr);
 int     get_map_height(char **info);
 int     get_map_width(char **info);
 void	check_info(char **info);
-int     check_map(char **info);
+void    check_map(char **info);
 void	exit_false_text_param(void);
+void	exit_false_map_form(void);
+void	exit_false_map(void);
+t_tool	init_hero(char **info);
+
+
+
+void    print_hero(t_tool hero);
 
 #endif
