@@ -78,6 +78,46 @@ static t_rgb	init_colors(char **info, char c)
 	return(rgb);
 }
 
+static char *ft_fill_line(char **info, int i, int w)
+{
+	char *map;
+	int len;
+	int	j;
+
+	j = 0;
+	len = ft_strlen(info[i]);
+	map = malloc(sizeof(char) *  (w + 1));
+	while (info && j < w)
+	{
+		if (j > len || !is_space(info[i][j]))
+			map[j] = 'x';
+		else
+			map[j] = info[i][j];
+		++j;
+	}
+	map[j] = '\0';
+	return (map);
+}
+
+static char**	init_map(char **info, int w, int h)
+{
+	int		i;
+	int		k;
+	char	**map;
+
+	i = 6;
+	k = 0;
+	map = malloc(sizeof(char*) * (h + 1));
+	while (info && info[i])
+	{
+		map[k] = ft_fill_line(info, i, w);
+		++i;
+		++k;
+	}
+	map[k] = NULL;
+	return (map);
+}
+
 t_tool	init_hero(char **info)
 {
 	t_tool	hero;
@@ -87,5 +127,7 @@ t_tool	init_hero(char **info)
 	hero.coordin = init_coordin(info);
 	hero.ceiling = init_colors(info, 'C');
 	hero.floor = init_colors(info, 'F');
+	printf("%d\n%d\n", hero.height, hero.width);
+	hero.map = init_map(info, hero.width, hero.height);
 	return (hero);
 }

@@ -1,16 +1,16 @@
 #include "cub3d.h"
 
-// static void	printf_matrix(char **map)
-// {
-// 	int	i;
+static void	printf_matrix(char **map)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (map && map[i])
-// 	{
-// 		printf("%s\n", map[i]);
-// 		i++;
-// 	}
-// }
+	i = 0;
+	while (map && map[i])
+	{
+		printf("%s\n", map[i]);
+		i++;
+	}
+}
 
 void print_hero(t_tool hero)
 {
@@ -26,6 +26,6 @@ void print_hero(t_tool hero)
 	printf("hero.ceiling.r = |%d|\n", hero.ceiling.r);
 	printf("hero.ceiling.g = |%d|\n", hero.ceiling.g);
 	printf("hero.ceiling.b = |%d|\n", hero.ceiling.b);
-	// printf("hero.map is\n");
-	// printf_matrix(hero.map);
+	printf("hero.map is\n");
+	printf_matrix(hero.map);
 }
