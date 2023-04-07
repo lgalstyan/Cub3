@@ -1,42 +1,46 @@
 #include "cub3d.h"
 
-int	check_rgb_number(char *str, int *i)
+int	check_rgb_number(char *str, int i)
 {
 	int	count;
+	char **array;
+	int	tmp;
 
-	count = count_com(str, *i);
+	array = NULL;
+	tmp = 0;
+	count = count_com(str, i);
 	if (count > 3)
 		return (1);
-	while (str[*i] && str[*i] != ',' && str[*i] != '\n' && is_space(str[*i]))
+	array = ft_split(str + i, ',');
+	if (array[0] && array[1] && array[2])
 	{
-		if (count == 3)
+		tmp = ft_atoi(array[0]);
+		if (tmp < 0 || tmp > 255)
 		{
-			if (str[*i - 1] && is_digit(str[*i - 1]) && str[*i] != '1' && str[*i] != '2')
-				return (3);
-			count--;
+			ft_free_matrix(array);
+			return (3);
 		}
-		else 
+		tmp = ft_atoi(array[1]);
+		if (tmp < 0 || tmp > 255)
 		{
-			if ((str[*i] < '0' || str[*i] > '9'))
-					return (4);
+			ft_free_matrix(array);
+			return (2);
 		}
-		(*i)++;
+		tmp = ft_atoi(array[2]);
+		if (tmp < 0 || tmp > 255)
+		{
+			ft_free_matrix(array);
+			return (1);
+		}
 	}
+	ft_free_matrix(array);
 	return (0);
 }
 
-int check_rgb_line(char *str, int *i)
+int check_rgb_line(char *str, int i)
 {
 	if (check_rgb_number(str, i))
 		return (1);
-	if (str[*i] && str[*i] == ',')
-		(*i)++;
-	if (check_rgb_number(str, i))
-		return (2);
-	if (str[*i] && str[*i] == ',')
-		(*i)++;
-	if (check_rgb_number(str, i))
-		return (3);
 	return (0);
 }
 
@@ -45,20 +49,17 @@ int	check_rgb(char *info)
 	int	j;
 
 	j = 0;
-	while (info && info[j])
-	{
-		while (info[j] && !is_space(info[j]))
-			j++;
-		if (info[j] && info[j] != 'F' && info[j] != 'C')
-			return(3);
+	while (info && info[j] && !is_space(info[j]))
 		j++;
-		while (info[j] && !is_space(info[j]))
-			j++;
-		if (info[j] && check_rgb_line(info, &j))
-			return (4);
-		while (info[j] && !is_space(info[j]))
-			j++;
-	}
+	if (info[j] && info[j] != 'F' && info[j] != 'C')
+		return(3);
+	j++;
+	while (info[j] && !is_space(info[j]))
+		j++;
+	if (info[j] && check_rgb_line(info, j))
+		return (4);
+	while (info[j] && !is_space(info[j]))
+		j++;
 	return (0);
 }
 

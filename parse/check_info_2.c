@@ -26,10 +26,12 @@ int	count_com(char *str, int i)
 	int	count;
 
 	count = 0;
-	while (str[i] && str[i] != ',' && str[i] != '\n' && is_space(str[i]))
+	while (str && str[i])
 	{
-		count++;
+		if (str[i] == ',')
+			count++;
 		i++;
 	}
+	count++;
 	return (count);
 }

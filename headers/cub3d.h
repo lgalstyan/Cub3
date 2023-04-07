@@ -52,8 +52,6 @@ void	exit_false_map_form(void);
 void	exit_false_map(void);
 t_tool	init_hero(char **info);
 
-
-
 void    print_hero(t_tool hero);
 
 #endif
