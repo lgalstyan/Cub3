@@ -23,6 +23,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "structs.h"
+# include <mlx.h>
 
 t_tool	parser(char *path);
 void	check_path(char *path);

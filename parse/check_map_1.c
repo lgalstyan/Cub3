@@ -57,11 +57,11 @@ void	check_map(char **info)
 				exit_false_map();
 			if (info[i][j] && ft_strrchr(HERO, info[i][j]))
 				++count;
-			if (info[i][j] == '0' && check_around(info, i , j) != 0)
+			if ((info[i][j] == '0' || ft_strchr(HERO, info[i][j])) && check_around(info, i , j) != 0)
 				exit_false_map();
 			++j;
 		}
 	}
-	if (count > 1 || count < 1)
+	if (count != 1)
 		exit_false_map();
 }
