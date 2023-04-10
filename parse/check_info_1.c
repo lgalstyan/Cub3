@@ -33,6 +33,11 @@ int	check_rgb_number(char *str, int i)
 			return (1);
 		}
 	}
+	else
+	{
+		ft_free_matrix(array);
+		return (3);
+	}
 	ft_free_matrix(array);
 	return (0);
 }
@@ -98,6 +103,7 @@ void	check_info(char **info)
 	i = 0;
 	c_path = 0;
 	c_rgb = 0;
+	// dupes(info);
 	while (info && info[i] && i < 6)
 	{
 		f_path = check_texture_line(info[i]);

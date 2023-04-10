@@ -12,11 +12,9 @@
 
 #include "cub3d.h"
 #include <math.h>
-#include <mlx.h>
 
 t_tool	parser(char *path)
 {
-	
 	char	**info;
 	t_tool	hero;
 
@@ -27,6 +25,6 @@ t_tool	parser(char *path)
 	check_map(info);
 	hero = init_hero(info);
 	ft_free_matrix(info);
-	//print_hero(hero);
+	print_hero(hero);
 	return (hero);
 }

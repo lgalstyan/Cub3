@@ -23,7 +23,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "structs.h"
-# include <mlx.h>
+// # include <mlx.h>
 
 t_tool	parser(char *path);
 void	check_path(char *path);
@@ -52,6 +52,8 @@ void	exit_false_text_param(void);
 void	exit_false_map_form(void);
 void	exit_false_map(void);
 t_tool	init_hero(char **info);
+void	dupes(char **info);
+void	*ft_calloc(size_t count, size_t size);
 
 void    print_hero(t_tool hero);
 
