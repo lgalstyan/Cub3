@@ -62,12 +62,10 @@ static t_rgb	init_colors(char **info, char c)
 		ignor_space(info[i], &j);
 		if (info[i][j] == c)
 		{
-			printf("c = %c\n", c);
 			tmp = get_texture(info[i]);
 			array = ft_split(tmp, ',');
 			if (array[0] && array[1] && array[2])
 			{
-				printf("rgb.r = %d\n", rgb.r);
 				rgb.r = ft_atoi(array[0]);
 				rgb.g = ft_atoi(array[1]);
 				rgb.b = ft_atoi(array[2]);
@@ -129,7 +127,6 @@ t_tool	init_hero(char **info)
 	hero.coordin = init_coordin(info);
 	hero.ceiling = init_colors(info, 'C');
 	hero.floor = init_colors(info, 'F');
-	// printf("%d\n%d\n", hero.height, hero.width);
 	hero.map = init_map(info, hero.width, hero.height);
 	return (hero);
 }
