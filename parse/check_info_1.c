@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_info_1.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/13 17:13:40 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/04/13 17:13:44 by lgalstya         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	check_rgb_number(char *str, int i)
 {
-	int	count;
-	char **array;
-	int	tmp;
+	int		count;
+	char	**array;
+	int		tmp;
 
 	array = NULL;
 	tmp = 0;
@@ -42,7 +54,7 @@ int	check_rgb_number(char *str, int i)
 	return (0);
 }
 
-int check_rgb_line(char *str, int i)
+int	check_rgb_line(char *str, int i)
 {
 	if (check_rgb_number(str, i))
 		return (1);
@@ -57,7 +69,7 @@ int	check_rgb(char *info)
 	while (info && info[j] && !is_space(info[j]))
 		j++;
 	if (info[j] && info[j] != 'F' && info[j] != 'C')
-		return(3);
+		return (3);
 	j++;
 	while (info[j] && !is_space(info[j]))
 		j++;
@@ -79,7 +91,7 @@ int	check_texture_line(char *info)
 			j++;
 		if (is_corr_texture(info, j))
 			return (2);
-		j+=2;
+		j += 2;
 		while (info[j] && !is_space(info[j]))
 			j++;
 		while (info[j] && is_space(info[j]))
@@ -89,7 +101,7 @@ int	check_texture_line(char *info)
 		else
 			return (2);
 	}
-	return(0);
+	return (0);
 }
 
 void	check_info(char **info)
@@ -97,14 +109,14 @@ void	check_info(char **info)
 	int	i;
 	int	f_rgb;
 	int	f_path;
-	int c_rgb;
-	int c_path;
+	int	c_rgb;
+	int	c_path;
 
 	i = 0;
 	c_path = 0;
 	c_rgb = 0;
 	// dupes(info);
-	while (info && info[i] && i < 6)
+	while (info && info[i] && i < 5)
 	{
 		f_path = check_texture_line(info[i]);
 		f_rgb = check_rgb(info[i]);
