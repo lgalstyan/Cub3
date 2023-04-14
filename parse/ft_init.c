@@ -87,21 +87,21 @@ static t_rgb	init_colors(char **info, char c)
 	}
 	ft_free_matrix(array);
 	free(tmp);
-	return(rgb);
+	return (rgb);
 }
 
-static char *ft_fill_line(char **info, int i, int w)
+static char	*ft_fill_line(char **info, int i, int w)
 {
-	char *map;
-	int len;
-	int	j;
+	char	*map;
+	int		len;
+	int		j;
 
 	j = 0;
 	len = ft_strlen(info[i]);
-	map = malloc(sizeof(char) *  (w + 1));
+	map = malloc(sizeof(char) * (w + 1));
 	while (info && j < w)
 	{
-		if (j > len || !is_space(info[i][j]))
+		if (j > len || !is_space(info[i][j]) || info[i][j] == '\0')
 			map[j] = 'x';
 		else
 			map[j] = info[i][j];
@@ -119,7 +119,7 @@ static char**	init_map(char **info, int w, int h)
 
 	i = 6;
 	k = 0;
-	map = malloc(sizeof(char*) * (h + 1));
+	map = malloc(sizeof(char *) * (h + 1));
 	while (info && info[i])
 	{
 		map[k] = ft_fill_line(info, i, w);

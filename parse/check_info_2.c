@@ -19,22 +19,23 @@ int	is_space(char c)
 	return (1);
 }
 
-int	is_corr_texture(char *s, int i)
+int	is_corr_texture(char *s, int i, int (*fd)[4])
 {
-	if (s && s[i] && s[i] == 'N'  && s[i + 1]&&
-		s[i + 1] == 'O' && s[i + 2] && !is_space(s[i + 2]))
-		return (0);
-	else if (s && s[i] && s[i] == 'S' && s[i + 1]&&
-		s[i + 1] == 'O' && s[i + 2] && !is_space(s[i + 2]))
-		return (0);
+	if (s && s[i] && s[i] == 'N' && s[i + 1]
+		&& s[i + 1] == 'O' && s[i + 2] && !is_space(s[i + 2]))
+		*fd[0] += 1;
+	else if (s && s[i] && s[i] == 'S' && s[i + 1]
+		&& s[i + 1] == 'O' && s[i + 2] && !is_space(s[i + 2]))
+		*fd[1] += 1;
 	else if (s && s[i] && s[i] == 'W' && s[i + 1]
 		&& s[i + 1] == 'E' && s[i + 2] && !is_space(s[i + 2]))
-		return (0);
+		*fd[2] += 1;
 	else if (s && s[i] && s[i] == 'E' && s[i + 1]
 		&& s[i + 1] == 'A' && s[i + 2] && !is_space(s[i + 2]))
-		return (0);
+		*fd[3] += 1;
 	else
-		return (2);
+		return (0);
+	return (2);
 }
 
 int	count_com(char *str, int i)

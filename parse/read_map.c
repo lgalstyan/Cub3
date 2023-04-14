@@ -25,6 +25,19 @@ int	whites(char *s)
 	return (0);
 }
 
+int	ft_check_file(char *path)
+{
+	int	fd;
+
+	fd = open(path, O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error ");
+		exit(3);
+	}
+	return (fd);
+}
+
 char	**read_file(char *path)
 {
 	char	*curr;
@@ -34,7 +47,7 @@ char	**read_file(char *path)
 	int		fd;
 
 	str = ft_strdup("");
-	fd = open(path, O_RDONLY);
+	fd = ft_check_file(path);
 	curr = get_next_line(fd);
 	while (curr)
 	{
