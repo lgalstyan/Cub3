@@ -80,26 +80,16 @@ int	check_rgb(char *info)
 	return (0);
 }
 
-void	init_array(int (*fl)[4])
-{
-	*fl[0] = 0;
-	*fl[1] = 0;
-	*fl[2] = 0;
-	*fl[3] = 0;
-}
-
 int	check_texture_line(char *info)
 {
 	int	j;
-	int	fl[4];
 
 	j = 0;
-	init_array(&fl);
 	while (info && info[j])
 	{
 		while (info[j] && !is_space(info[j]))
 			j++;
-		if (is_corr_texture(info, j, &fl))
+		if (is_corr_texture(info, j))
 			return (2);
 		j += 2;
 		while (info[j] && !is_space(info[j]))
@@ -111,8 +101,6 @@ int	check_texture_line(char *info)
 		else
 			return (2);
 	}
-	if (fl[0] != 1 && fl[1] != 1 && fl[2] != 1 && fl[3] != 1)
-		return (1);
 	return (0);
 }
 
@@ -127,7 +115,7 @@ void	check_info(char **info)
 	i = 0;
 	c_path = 0;
 	c_rgb = 0;
-	// dupes(info);
+	check_count(info);
 	while (info && info[i] && i < 5)
 	{
 		f_path = check_texture_line(info[i]);

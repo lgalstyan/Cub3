@@ -13,6 +13,16 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+typedef struct s_flags
+{
+	int	flag0;
+	int	flag1;
+	int	flag2;
+	int	flag3;
+	int	i;
+	int	j;
+}				t_flag;
+
 typedef struct s_rgb
 {
 	int	r;
