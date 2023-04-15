@@ -32,7 +32,7 @@ int	ft_strcmp(char *s1, char *s2)
 
 int	ft_strrchr(char *s, char c)
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
 	while (*s)

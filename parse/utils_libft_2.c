@@ -26,11 +26,11 @@ char	*ft_strchr(char *s, int c)
 	return ((char *)(s + i));
 }
 
-int is_digit(char c)
+int	is_digit(char c)
 {
-    if (c >= '0' && c <= '9')
-        return (0);
-    return (1);
+	if (c >= '0' && c <= '9')
+		return (0);
+	return (1);
 }
 
 static int	ft_strlcpy(char *dst, char *src, int l)
@@ -54,8 +54,8 @@ static int	ft_strlcpy(char *dst, char *src, int l)
 char	*ft_substr(char *s, int start, int len)
 {
 	char	*s2;
-	int	count;
-	int	end;
+	int		count;
+	int		end;
 
 	end = 0;
 	count = ft_strlen(s);

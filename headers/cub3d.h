@@ -55,6 +55,8 @@ t_tool	init_hero(char **info);
 void	dupes(char **info);
 void	check_count(char **info);
 void	*ft_calloc(size_t count, size_t size);
+t_gps	init_coordin(char **info);
+t_rgb	init_colors(char **info, char c);
 
 void	print_hero(t_tool hero);
 

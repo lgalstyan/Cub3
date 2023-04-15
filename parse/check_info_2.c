@@ -36,21 +36,6 @@ int	is_corr_texture(char *s, int i)
 	return (2);
 }
 
-int	count_com(char *str, int i)
-{
-	int	count;
-
-	count = 0;
-	while (str && str[i])
-	{
-		if (str[i] == ',')
-			count++;
-		i++;
-	}
-	count++;
-	return (count);
-}
-
 static int	check_line(char **info, char a, char b, t_flag fl)
 {
 	int	i;
@@ -64,34 +49,33 @@ static int	check_line(char **info, char a, char b, t_flag fl)
 	return (1);
 }
 
-// void	check_lines(char **info, t_flag *fl)
-// {
-
-// 	while (info && info[(*fl).i] && info[(*fl).i][(*fl).j])
-// 	{
-// 		if (!check_line(info, 'N', 'O', (*fl)))
-// 		{
-// 			(*fl).flag0++;
-// 			return ;
-// 		}
-// 		else if (!check_line(info, 'S', 'O', (*fl)))
-// 		{
-// 			(*fl).flag1++;
-// 			return ;
-// 		}
-// 		else if (!check_line(info, 'E', 'A', (*fl)))
-// 		{
-// 			(*fl).flag2++;
-// 			return ;
-// 		}
-// 		else if (!check_line(info, 'W', 'E', (*fl)))
-// 		{
-// 			(*fl).flag3++;
-// 			return ;
-// 		}
-// 		++(*fl).j;
-// 	}
-// }
+static void	check_lines_info(char **info, t_flag *fl)
+{
+	while (info && info[(*fl).i] && info[(*fl).i][(*fl).j])
+	{
+		if (!check_line(info, 'N', 'O', (*fl)))
+		{
+			(*fl).flag0++;
+			return ;
+		}
+		else if (!check_line(info, 'S', 'O', (*fl)))
+		{
+			(*fl).flag1++;
+			return ;
+		}
+		else if (!check_line(info, 'E', 'A', (*fl)))
+		{
+			(*fl).flag2++;
+			return ;
+		}
+		else if (!check_line(info, 'W', 'E', (*fl)))
+		{
+			(*fl).flag3++;
+			return ;
+		}
+		++(*fl).j;
+	}
+}
 
 void	check_count(char **info)
 {
@@ -105,30 +89,7 @@ void	check_count(char **info)
 	fl.flag3 = 0;
 	while (info && info[fl.i] && fl.i < 6)
 	{
-		while (info && info[fl.i] && info[fl.i][fl.j])
-		{
-			if (!check_line(info, 'N', 'O', fl))
-			{
-				fl.flag0++;
-				break ;
-			}
-			else if (!check_line(info, 'S', 'O', fl))
-			{
-				fl.flag1++;
-				break ;
-			}
-			else if (!check_line(info, 'E', 'A', fl))
-			{
-				fl.flag2++;
-				break ;
-			}
-			else if (!check_line(info, 'W', 'E', fl))
-			{
-				fl.flag3++;
-				break ;
-			}
-			++fl.j;
-		}
+		check_lines_info(info, &fl);
 		++fl.i;
 	}
 	if (fl.flag0 != 1 || fl.flag1 != 1 || fl.flag2 != 1 || fl.flag3 != 1)

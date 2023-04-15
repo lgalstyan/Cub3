@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_map_size.c                                     :+:      :+:    :+:   */
+/*   check_info_3.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/13 17:15:33 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/04/13 17:15:34 by lgalstya         ###   ########.fr       */
+/*   Created: 2023/04/15 14:48:46 by lgalstya          #+#    #+#             */
+/*   Updated: 2023/04/15 14:48:47 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	get_map_width(char **info)
+int	count_com(char *str, int i)
 {
-	int	max;
-	int	tmp;
-	int	i;
+	int	count;
 
-	max = 0;
-	tmp = 0;
-	i = 5;
-	while (info && info[i])
+	count = 0;
+	while (str && str[i])
 	{
+		if (str[i] == ',')
+			count++;
 		i++;
-		tmp = ft_strlen(info[i]);
-		if (tmp > max)
-		max = tmp;
 	}
-	return (max);
-}
-
-int	get_map_height(char **info)
-{
-	int	max;
-
-	max = 6;
-	while (info && info[max])
-	{
-		max++;
-	}
-	return (max - 6);
+	count++;
+	return (count);
 }

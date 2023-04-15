@@ -24,7 +24,7 @@ static void	printf_matrix(char **map)
 	}
 }
 
-void print_hero(t_tool hero)
+void	print_hero(t_tool hero)
 {
 	printf("hero.coordin.we = |%s|\n", hero.coordin.we);
 	printf("hero.coordin.so = |%s|\n", hero.coordin.so);
