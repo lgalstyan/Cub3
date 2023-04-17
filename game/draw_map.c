@@ -2,7 +2,7 @@
 
 void	color_block(t_tool *hero, int i, int j, int color)
 {
-	int k;
+	int	k;
 	int	l;
 
 	k = -1;
@@ -11,7 +11,8 @@ void	color_block(t_tool *hero, int i, int j, int color)
 		l = -1;
 		while (++l < 20)
 		{
-			mlx_pixel_put(hero->mlx, hero->mlx_win, l + (20 * j), k + (20 * i), color);
+			mlx_pixel_put(hero->mlx, hero->mlx_win, l + (20 * j),
+				 k + (20 * i), color);
 		}
 	}
 }

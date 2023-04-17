@@ -1,56 +1,8 @@
 #include "cub3d.h"
 
-void	move_a(t_tool *hero)
-{
-	// hero->dirx -=0.1
-	if (hero->map[hero->pdp.posy][hero->pdp.posx - 1] != '1')
-	{
-		hero->map[hero->pdp.posy][hero->pdp.posx] = '0';
-		hero->pdp.posx--;
-		hero->map[hero->pdp.posy][hero->pdp.posx] = 'N';
-		mlx_clear_window(hero->mlx, hero->mlx_win);
-		draw_map(hero);
-	}
-}
-
-void	move_s(t_tool *hero)
-{
-	if (hero->map[hero->pdp.posy + 1][hero->pdp.posx] != '1')
-	{
-		hero->map[hero->pdp.posy][hero->pdp.posx] = '0';
-		hero->pdp.posy++;
-		hero->map[hero->pdp.posy][hero->pdp.posx] = 'N';
-		mlx_clear_window(hero->mlx, hero->mlx_win);
-		draw_map(hero);
-	}
-}
-
-void	move_d(t_tool *hero)
-{
-	if (hero->map[hero->pdp.posy][hero->pdp.posx + 1] != '1')
-	{
-		hero->map[hero->pdp.posy][hero->pdp.posx] = '0';
-		hero->pdp.posx++;
-		hero->map[hero->pdp.posy][hero->pdp.posx] = 'N';
-		mlx_clear_window(hero->mlx, hero->mlx_win);
-		draw_map(hero);
-	}
-}
-
-void	move_w(t_tool *hero)
-{
-	if (hero->map[hero->pdp.posy - 1][hero->pdp.posx] != '1')
-	{
-		hero->map[hero->pdp.posy][hero->pdp.posx] = '0';
-		hero->pdp.posy--;
-		hero->map[hero->pdp.posy][hero->pdp.posx] = 'N';
-		mlx_clear_window(hero->mlx, hero->mlx_win);
-		draw_map(hero);
-	}
-}
-
 int	move_player(int key, t_tool *hero)
 {
+	hero->pdp.pa = 90;
 	if (key == 0 || key == 123)
 	{
 		move_a(hero);
@@ -69,7 +21,7 @@ int	move_player(int key, t_tool *hero)
 	}
 	else if (key == 53)
 	{
-		exit(0);//exit_game(hero);
+		exit(0); //exit_game(hero);
 	}
 	return (0);
 }
@@ -82,8 +34,6 @@ void	start(t_tool hero)
 	// int		line_length;
 	// int		endian;
 
-	// hero.pdp.posx = 22;
-	// hero.pdp.posy = 12;
 	hero.pdp.dirx = -1;
 	hero.pdp.diry = 0;
 	hero.pdp.planex = 0;
@@ -100,7 +50,4 @@ void	start(t_tool hero)
 	// mlx_pixel_put(hero.mlx, hero.mlx_win, hero.pdp.posx, hero.pdp.posy, 0x00FF0000);
 	mlx_hook(hero.mlx_win, 2, 1L << 0, move_player, &hero);
 	mlx_loop(hero.mlx);
-
-
-
 }

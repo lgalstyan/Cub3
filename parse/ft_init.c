@@ -73,7 +73,7 @@ static char	**init_map(char **info, int w, int h)
 	return (map);
 }
 
-void	get_pos(char **info, t_pdp *lol)
+char	get_pos(char **info, t_pdp *lol)
 {
 	int		i;
 	int		j;
@@ -88,23 +88,25 @@ void	get_pos(char **info, t_pdp *lol)
 			{
 				lol->posx = j;
 				lol->posy = i - 6;
-				return ;
+				return (info[i][j]);
 			}
 			++j;
 		}
 		++i;
 	}
+	return (0);
 }
 
 t_tool	init_hero(char **info)
 {
 	t_tool	hero;
+	
 	hero.height = get_map_height(info);
 	hero.width = get_map_width(info);
 	hero.coordin = init_coordin(info);
 	hero.ceiling = init_colors(info, 'C');
 	hero.floor = init_colors(info, 'F');
-	get_pos(info, &hero.pdp);
+	hero.player = get_pos(info, &hero.pdp);
 	hero.map = init_map(info, hero.width, hero.height);
 	return (hero);
 }

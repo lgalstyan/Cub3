@@ -38,6 +38,7 @@ void	print_hero(t_tool hero)
 	printf("hero.ceiling.r = |%d|\n", hero.ceiling.r);
 	printf("hero.ceiling.g = |%d|\n", hero.ceiling.g);
 	printf("hero.ceiling.b = |%d|\n", hero.ceiling.b);
+	printf("hero.player = |%c|\n", hero.player);
 	printf("hero.map is\n");
 	printf_matrix(hero.map);
 }

@@ -20,6 +20,7 @@
 # define PI 3.1415926535
 
 # include <unistd.h>
+# include <math.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
@@ -60,8 +61,14 @@ t_gps	init_coordin(char **info);
 t_rgb	init_colors(char **info, char c);
 char	*get_texture(char *info);
 void	ignor_space(char *info, int	*i);
-void	print_hero(t_tool hero);
 void	start(t_tool hero);
 void	draw_map(t_tool *hero);
+double	deg_to_rad(double degr);
+void	move_a(t_tool *hero);
+void	move_s(t_tool *hero);
+void	move_d(t_tool *hero);
+void	move_w(t_tool *hero);
+
+void	print_hero(t_tool hero);
 
 #endif

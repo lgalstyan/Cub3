@@ -16,8 +16,9 @@
 
 typedef struct s_pdp
 {
-	int		posx;
-	int		posy;
+	double	pa;
+	double	posx;
+	double	posy;
 	double	dirx;
 	double	diry;
 	double	planex;
@@ -58,6 +59,8 @@ typedef struct s_gps
 typedef struct s_tool
 {
 	char	**map;
+	char	*add[9];
+	char	player;
 	int		width;
 	int		height;
 	t_gps	coordin;
