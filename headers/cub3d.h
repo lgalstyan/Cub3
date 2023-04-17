@@ -17,13 +17,14 @@
 # define SPACES  " \n\t"
 # define CHARS  "01NSWE"
 # define HERO  "NSWE"
+# define PI 3.1415926535
 
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include "structs.h"
-// # include <mlx.h>
+# include <mlx.h>
 
 t_tool	parser(char *path);
 void	check_path(char *path);
@@ -57,7 +58,10 @@ void	check_count(char **info);
 void	*ft_calloc(size_t count, size_t size);
 t_gps	init_coordin(char **info);
 t_rgb	init_colors(char **info, char c);
-
+char	*get_texture(char *info);
+void	ignor_space(char *info, int	*i);
 void	print_hero(t_tool hero);
+void	start(t_tool hero);
+void	draw_map(t_tool *hero);
 
 #endif

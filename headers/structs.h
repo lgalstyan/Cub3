@@ -13,6 +13,22 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+
+typedef struct s_pdp
+{
+	int		posx;
+	int		posy;
+	double	dirx;
+	double	diry;
+	double	planex;
+	double	planey;
+	double	time;
+	double	oldtime;
+	double	camerax;
+	double	raydirx;
+	double	raydiry;
+}				t_pdp;
+
 typedef struct s_flags
 {
 	int	flag0;
@@ -47,6 +63,10 @@ typedef struct s_tool
 	t_gps	coordin;
 	t_rgb	floor;
 	t_rgb	ceiling;
+	t_pdp	pdp;
+	void	*mlx;
+	void	*mlx_win;
+	void	*img;
 
 }			t_tool;
 

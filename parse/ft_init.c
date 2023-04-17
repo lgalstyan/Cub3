@@ -18,7 +18,7 @@ void	ignor_space(char *info, int	*i)
 		(*i)++;
 }
 
-static char	*get_texture(char *info)
+char	*get_texture(char *info)
 {
 	int		i;
 	char	*res;
@@ -73,15 +73,38 @@ static char	**init_map(char **info, int w, int h)
 	return (map);
 }
 
+void	get_pos(char **info, t_pdp *lol)
+{
+	int		i;
+	int		j;
+
+	i = 6;
+	while (info && info[i])
+	{
+		j = 0;
+		while (info[i][j])
+		{
+			if (ft_strchr(HERO, info[i][j]))
+			{
+				lol->posx = j;
+				lol->posy = i - 6;
+				return ;
+			}
+			++j;
+		}
+		++i;
+	}
+}
+
 t_tool	init_hero(char **info)
 {
 	t_tool	hero;
-
 	hero.height = get_map_height(info);
 	hero.width = get_map_width(info);
 	hero.coordin = init_coordin(info);
 	hero.ceiling = init_colors(info, 'C');
 	hero.floor = init_colors(info, 'F');
+	get_pos(info, &hero.pdp);
 	hero.map = init_map(info, hero.width, hero.height);
 	return (hero);
 }

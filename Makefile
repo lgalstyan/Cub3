@@ -5,14 +5,15 @@ CC			= cc
 INCLUDE 	= -I./headers
 RM			= rm -rf
 CFLAGS		= -Wall -Wextra -Werror #-fsanitize=address -g
+M_FLAGS		= -lmlx -framework OpenGL -framework AppKit
 
 %.o : %.c
-	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
+	$(CC) $(CFLAGS) $(INCLUDE) -Imlx -o $@ -c $<
 
 all: $(NAME)
 
 $(NAME) : $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDE) $(OBJS)  -o $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDE) $(OBJS) $(M_FLAGS) -o $(NAME)
 
 clean :
 	$(RM) $(OBJS)

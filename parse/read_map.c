@@ -45,15 +45,23 @@ char	**read_file(char *path)
 	char	*str;
 	char	**matr;
 	int		fd;
+	int		cycle;
 
+	cycle = 0;
 	str = ft_strdup("");
 	fd = ft_check_file(path);
 	curr = get_next_line(fd);
 	while (curr)
 	{
 		tmp = str;
-		if (!whites(curr))
+		if (!whites(curr) && ++cycle <= 6)
 			str = ft_strjoin(tmp, curr);
+		else if (cycle > 6)
+		{
+			if (whites(curr))
+				exit_false_map();//stex petqa maqrel durs galucel
+			str = ft_strjoin(tmp, curr);
+		}
 		free(curr);
 		curr = get_next_line(fd);
 	}

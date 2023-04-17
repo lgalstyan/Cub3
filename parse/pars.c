@@ -25,6 +25,6 @@ t_tool	parser(char *path)
 	check_map(info);
 	hero = init_hero(info);
 	ft_free_matrix(info);
-	print_hero(hero);
+	// print_hero(hero);
 	return (hero);
 }
