@@ -19,8 +19,8 @@ void	move_a(t_tool *hero)
 
 void	move_s(t_tool *hero)
 {
-	hero->pdp.posx += hero->pdp.dirx;
-	hero->pdp.posy += hero->pdp.diry;
+	hero->pdp.posx -= hero->pdp.dirx;
+	hero->pdp.posy -= hero->pdp.diry;
 	if (hero->map[(int)hero->pdp.posy + 1][(int)hero->pdp.posx] != '1')
 	{
 		hero->map[(int)hero->pdp.posy][(int)hero->pdp.posx] = '0';
@@ -50,14 +50,30 @@ void	move_d(t_tool *hero)
 
 void	move_w(t_tool *hero)
 {
-	hero->pdp.posx -= hero->pdp.dirx;
-	hero->pdp.posy -= hero->pdp.diry;
-	if (hero->map[(int)hero->pdp.posy - 1][(int)hero->pdp.posx] != '1')
+	char sym;
+
+	hero->mx = hero->pdp.posx + (hero->pdp.dirx * 0.2);
+	hero->my = hero->pdp.posy + (hero->pdp.diry * 0.2);
+	// sym = write our getmapsymbol
+	if (sym == '0' || sym == 'x')
 	{
-		hero->map[(int)hero->pdp.posy][(int)hero->pdp.posx] = '0';
-		hero->pdp.posy--;
-		hero->map[(int)hero->pdp.posy][(int)hero->pdp.posx] = 'N';
-		mlx_clear_window(hero->mlx, hero->mlx_win);
-		draw_map(hero);
+		if (sym == 'x')
+		{
+			// i guess other thing were for bonus
+			// if you want we can do it
+			// write our put map sym
+		}
+		// then come steps of the player
+		hero->pdp.posx += hero->pdp.dirx * 0.1;//why 0.1
+		hero->pdp.posy += hero->pdp.diry * 0.1;
+
 	}
+	// if (hero->map[(int)hero->pdp.posy - 1][(int)hero->pdp.posx] != '1')
+	// {
+	// 	hero->map[(int)hero->pdp.posy][(int)hero->pdp.posx] = '0';
+	// 	hero->pdp.posy--;
+	// 	hero->map[(int)hero->pdp.posy][(int)hero->pdp.posx] = 'N';
+	// 	mlx_clear_window(hero->mlx, hero->mlx_win);
+	// 	draw_map(hero);
+	// }
 }

@@ -18,6 +18,7 @@
 # define CHARS  "01NSWE"
 # define HERO  "NSWE"
 # define PI 3.1415926535
+# define RD 0.0174533
 
 # include <unistd.h>
 # include <math.h>
@@ -25,7 +26,7 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "structs.h"
-# include <mlx.h>
+# include "./mlxopengl/mlx.h"
 
 t_tool	parser(char *path);
 void	check_path(char *path);

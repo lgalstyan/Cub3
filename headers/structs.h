@@ -58,6 +58,8 @@ typedef struct s_gps
 
 typedef struct s_tool
 {
+	int		mx;
+	int		my;
 	char	**map;
 	char	*add[9];
 	char	player;

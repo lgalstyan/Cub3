@@ -2,7 +2,7 @@
 
 int	move_player(int key, t_tool *hero)
 {
-	hero->pdp.pa = 90;
+	// hero->pdp.pa = 90;
 	if (key == 0 || key == 123)
 	{
 		move_a(hero);
@@ -34,8 +34,9 @@ void	start(t_tool hero)
 	// int		line_length;
 	// int		endian;
 
-	hero.pdp.dirx = -1;
-	hero.pdp.diry = 0;
+	// hero.pdp.dirx = -1;
+	// hero.pdp.diry = 0;
+		// printf("hello/n");
 	hero.pdp.planex = 0;
 	hero.pdp.planey = 0.66;
 	hero.pdp.time = 0;
@@ -44,9 +45,12 @@ void	start(t_tool hero)
 	hero.mlx_win = mlx_new_window(hero.mlx, 1024, 512, "Cub3D");
 	//map_to_window(hero, hero.mlx, mlx_win);
 	hero.img = mlx_new_image(hero.mlx, 1024, 512);
+
 	// addr = mlx_get_data_addr(img, &bits_per_pixel, &line_length, &endian);
 	// dst = data->addr + ()
-	draw_map(&hero);
+	// draw_map(&hero);
+	hero.pdp.dirx = cos(hero.pdp.pa);
+	hero.pdp.diry = -1 * sin(hero.pdp.pa);
 	// mlx_pixel_put(hero.mlx, hero.mlx_win, hero.pdp.posx, hero.pdp.posy, 0x00FF0000);
 	mlx_hook(hero.mlx_win, 2, 1L << 0, move_player, &hero);
 	mlx_loop(hero.mlx);
