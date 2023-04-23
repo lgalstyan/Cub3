@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/20 12:07:51 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/04/20 17:35:43 by lgalstya         ###   ########.fr       */
+/*   Created: 2023/04/23 16:56:51 by tyenokya          #+#    #+#             */
+/*   Updated: 2023/04/23 16:56:53 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "get_next_line.h"
 
 char	*gnl_strlcpy(char *dst, char *src, size_t dstsize)

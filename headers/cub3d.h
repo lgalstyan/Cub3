@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/26 12:30:35 by lgalstya          #+#    #+#             */
-/*   Updated: 2023/03/26 12:30:37 by lgalstya         ###   ########.fr       */
+/*   Created: 2023/04/23 16:40:07 by tyenokya          #+#    #+#             */
+/*   Updated: 2023/04/23 16:40:09 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include "structs.h"
-# include "./mlxopengl/mlx.h"
+# include <mlx.h>
+// # include "./mlxopengl/mlx.h"
 
 t_tool	parser(char *path);
 void	check_path(char *path);
@@ -62,14 +63,16 @@ t_gps	init_coordin(char **info);
 t_rgb	init_colors(char **info, char c);
 char	*get_texture(char *info);
 void	ignor_space(char *info, int	*i);
-void	start(t_tool hero);
+void	game(t_tool *hero);
 void	draw_map(t_tool *hero);
 double	deg_to_rad(double degr);
 void	move_a(t_tool *hero);
 void	move_s(t_tool *hero);
 void	move_d(t_tool *hero);
 void	move_w(t_tool *hero);
-
+char	get_sym(int mx, int my, t_tool *hero);
+void	put_sym(int mx, int my, t_tool *hero, char c);
 void	print_hero(t_tool hero);
+int		fix_angle(int a);
 
 #endif

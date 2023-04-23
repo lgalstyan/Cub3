@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgalstya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/27 15:13:01 by lgalstya          #+#    #+#             */
-/*   Updated: 2022/04/09 14:31:10 by lgalstya         ###   ########.fr       */
+/*   Created: 2023/04/23 16:47:31 by tyenokya          #+#    #+#             */
+/*   Updated: 2023/04/23 16:47:33 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "cub3d.h"
 
 static size_t	cnt_word(char const *str, char delim)

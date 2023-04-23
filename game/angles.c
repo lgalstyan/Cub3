@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_info_3.c                                     :+:      :+:    :+:   */
+/*   angles.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tyenokya <tyenokya@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/23 16:42:23 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/04/23 16:42:29 by tyenokya         ###   ########.fr       */
+/*   Created: 2023/04/23 16:58:12 by tyenokya          #+#    #+#             */
+/*   Updated: 2023/04/23 16:58:13 by tyenokya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	count_com(char *str, int i)
+int fix_angle(int a)
 {
-	int	count;
+	if (a > 359)
+		a -= 360;
+	if (a < 0) 
+		a += 360;
+	return (a);
+}
 
-	count = 0;
-	while (str && str[i])
-	{
-		if (str[i] == ',')
-			count++;
-		i++;
-	}
-	count++;
-	return (count);
+double degToRad(int a)
+{
+	return (a * PI / 180.0);
 }
