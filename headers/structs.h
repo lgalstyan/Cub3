@@ -13,7 +13,20 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+typedef struct s_data
+{
+	int		pos_x;
+	int		pos_y;
+	char	**map;
+	int		x;
+	int		y;
+}				t_data;
+
 typedef struct s_ray {
+	int		dof;
+	int		zerosh;
+	int		zeros;
+	double	atan_ra;
 	double	tan_ra;
 	double	posx;
 	double	posy;
@@ -24,21 +37,31 @@ typedef struct s_ray {
 	double	vy;
 	double	rx;
 	double	ry;
+	double	xo;
+	double	yo;
 }				t_ray;
 
 typedef struct s_img {
-	void	*no;
-	void	*so;
-	void	*we;
-	void	*ea;
-	char	*add[5];
-	int		bits_per_pixel[5];
-	int		line_length[5];
-	int		endian[5];
+	void	*ptr;
+	char	*img;
+	int		bpp;
+	int		width;
+	int		height;
+	int		size_line;
+	int		endian;
 }				t_img;
 
 typedef struct s_pdp
 {
+	int		side;
+	int		hit;
+	int		mapx;
+	int		mapy;
+	int		stepx;
+	int		stepy;
+	int		drawend;
+	int		drawstart;
+	int		lineheight;
 	double	pa;
 	double	posx;
 	double	posy;
@@ -51,6 +74,11 @@ typedef struct s_pdp
 	double	camerax;
 	double	raydirx;
 	double	raydiry;
+	double	deltadistx;
+	double	deltadisty;
+	double	sidedistx;
+	double	sidedisty;
+	double	perpwalldist;
 }				t_pdp;
 
 typedef struct s_flags
@@ -81,21 +109,35 @@ typedef struct s_gps
 
 typedef struct s_tool
 {
+	void	*no;
+	void	*so;
+	void	*we;
+	void	*ea;
+	int		index;
 	int		mx;
 	int		my;
-	int		dis;
+	double	dis;
+	int		linelen;
 	char	**map;
 	char	player;
 	int		width;
 	int		height;
+	int		ray;
+	int		zeros;
 	t_gps	coordin;
 	t_rgb	floor;
 	t_rgb	ceiling;
 	t_pdp	pdp;
-	t_img	imgs;
+	t_img	*imgs;
+	t_data	data;
 	void	*mlx;
 	void	*mlx_win;
-	void	*img;
+	void	*ptr;
+	char	*img;
+	double	stepy;
+	double	angle;
+	int		f;
+	int		c;
 }			t_tool;
 
 #endif

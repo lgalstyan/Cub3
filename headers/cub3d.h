@@ -6,7 +6,7 @@
 /*   By: tyenokya <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/23 16:40:07 by tyenokya          #+#    #+#             */
-/*   Updated: 2023/04/23 16:40:09 by tyenokya         ###   ########.fr       */
+/*   Updated: 2023/05/05 15:55:30 by lgalstya         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@
 # define SPACES  " \n\t"
 # define CHARS  "01NSWE"
 # define HERO  "NSWE"
-# define PI 3.1415926535
+# define PI 3.14159
 # define RD 0.0174533
+# define WIDTH 1024
+# define HEIGHT 512
+# define MOVE_SPEED 0.2
+# define ROTATE_SPEED 0.15
 
 # include <unistd.h>
 # include <math.h>
@@ -27,7 +31,6 @@
 # include <stdio.h>
 # include "structs.h"
 # include <mlx.h>
-// # include "./mlxopengl/mlx.h"
 
 t_tool	parser(char *path);
 void	check_path(char *path);
@@ -70,9 +73,28 @@ void	move_a(t_tool *hero);
 void	move_s(t_tool *hero);
 void	move_d(t_tool *hero);
 void	move_w(t_tool *hero);
+int		start(t_tool *hero);
 char	get_sym(int mx, int my, t_tool *hero);
 void	put_sym(int mx, int my, t_tool *hero, char c);
 void	print_hero(t_tool hero);
-int		fix_angle(int a);
+double	fix_angle(double a);
+void	xpm_to_image(t_tool *hero);
+double	ray_dist(t_ray *ray);
+float	ft_abs(float num);
+int     move_player(int key, t_tool *hero);
+void	norm_init_win(t_tool *hero);
+int	    check_nwse(t_tool *hero);
+int     ft_texx(t_tool *hero, int n);
+void	find_pos_player(t_tool *hero);
+void	continue_init_win(t_tool *hero);
+void	create_map(t_tool *hero);
+void	raycasting(t_tool *hero, t_ray *ray);
+void	draw_line(t_tool *hero, int i);
+int		exit_game(t_tool *hero);
+int		create_trgb(int r, int g, int b);
+void	get_addr(t_tool *hero);
+void	init_structs(t_tool *hero);
+void	init_win(t_tool *hero);
+void	rotate_right(t_tool *hero, double rotate);
 
 #endif

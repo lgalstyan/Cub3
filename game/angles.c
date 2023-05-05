@@ -12,16 +12,20 @@
 
 #include "cub3d.h"
 
-int fix_angle(int a)
+double	fix_angle(double a)
 {
-	if (a > 359)
-		a -= 360;
-	if (a < 0) 
-		a += 360;
+	if (a >= 360)
+		a = a - 360;
+	else if (a <= (-1))
+		a = a + 360;
 	return (a);
 }
 
-double degToRad(int a)
+double	ray_dist(t_ray *ray)
 {
-	return (a * PI / 180.0);
+	double	x;
+
+	x = cos(deg_to_rad(ray->ra)) * (ray->rx - ray->posx)
+		- sin(deg_to_rad(ray->ra)) * (ray->ry - ray->posy);
+	return (x);
 }

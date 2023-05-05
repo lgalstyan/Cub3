@@ -11,23 +11,10 @@
 /* ************************************************************************** */
 
 #include "cub3d.h"
-#include <math.h>
-
-// void	init_params(t_tool *hero)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while (i < 9)
-// 	{
-// 		hero->addr[array_counter] = NULL;
-// 		++i;
-// 	}
-// }
 
 void	def_angle(t_tool *hero)
 {
-	if (hero-> player == 'E')
+	if (hero->player == 'E')
 		hero->pdp.pa = 0;
 	else if (hero-> player == 'N')
 		hero->pdp.pa = 90;
@@ -49,8 +36,6 @@ t_tool	parser(char *path)
 	check_map(info);
 	hero = init_hero(info);
 	def_angle(&hero);
-	// init_params(&hero);
 	ft_free_matrix(info);
-	// print_hero(hero);
 	return (hero);
 }
