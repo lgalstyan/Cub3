@@ -4,10 +4,10 @@ OBJS      	= $(SRCS:.c=.o)
 CC			= cc
 INCLUDE 	= -I./headers #-I./mlx
 RM			= rm -rf
-CFLAGS		= -Wall -Wextra -Werror #-fsanitize=address -g3
+CFLAGS		= -Wall -Wextra -Werror #-fsanitize=address -g
 M_FLAGS		= -lmlx  -framework OpenGL -framework AppKit  #-Lmlx
 
-%.o : %.c
+%.o : %.c  Makefile
 	$(CC) $(CFLAGS) $(INCLUDE) -Imlx -o $@ -c $<
 
 all: $(NAME)

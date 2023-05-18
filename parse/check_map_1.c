@@ -28,8 +28,8 @@ void	check_path(char *path)
 
 int	check_around(char **info, int i, int j)
 {
-	if (!info[i][j - 1] || !info[i][j + 1] ||
-		!info[i - 1][j] || !info[i + 1][j])
+	if (!info[i][j - 1] || (info[i][j + 1] && !info[i][j + 1])
+		|| !info[i - 1][j] || (info[i + 1] && !info[i + 1][j]))
 		return (1);
 	if (!ft_strrchr(CHARS, info[i][j - 1])
 		|| !ft_strrchr(CHARS, info[i][j + 1]))

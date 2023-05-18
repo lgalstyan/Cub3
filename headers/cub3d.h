@@ -81,10 +81,10 @@ double	fix_angle(double a);
 void	xpm_to_image(t_tool *hero);
 double	ray_dist(t_ray *ray);
 float	ft_abs(float num);
-int     move_player(int key, t_tool *hero);
+int		move_player(int key, t_tool *hero);
 void	norm_init_win(t_tool *hero);
-int	    check_nwse(t_tool *hero);
-int     ft_texx(t_tool *hero, int n);
+int		check_nwse(t_tool *hero);
+int		ft_texx(t_tool *hero, int n);
 void	find_pos_player(t_tool *hero);
 void	continue_init_win(t_tool *hero);
 void	create_map(t_tool *hero);
@@ -96,5 +96,8 @@ void	get_addr(t_tool *hero);
 void	init_structs(t_tool *hero);
 void	init_win(t_tool *hero);
 void	rotate_right(t_tool *hero, double rotate);
+void	ignor_space(char *info, int	*i);
+int		ft_cmp(char **array);
+void	check_xpm(char *xpm);
 
 #endif
