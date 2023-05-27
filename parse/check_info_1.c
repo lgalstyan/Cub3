@@ -55,6 +55,8 @@ int	check_rgb(char *info)
 	j++;
 	while (info[j] && !is_space(info[j]))
 		j++;
+	if (!info[j])
+		return (7);
 	if (info[j] && check_rgb_line(info, j))
 		return (4);
 	while (info[j] && !is_space(info[j]))
@@ -98,6 +100,7 @@ void	check_info(char **info)
 	c_path = 0;
 	c_rgb = 0;
 	check_count(info);
+	check_fc(info);
 	while (info && info[i] && i < 5)
 	{
 		f_path = check_texture_line(info[i]);
